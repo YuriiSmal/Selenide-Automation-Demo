@@ -41,6 +41,9 @@ jobs:
       - name: Grant execute permission for Gradlew
         run: chmod +x gradlew
 
+      - name: Adjust file permissions
+        run: sudo chmod -R 777 .github/browserConfig/browsers.json
+
       - name: Build with Gradle
         run: ./gradlew clean build
 
