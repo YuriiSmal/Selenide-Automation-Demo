@@ -75,7 +75,6 @@ public class BaseUITest {
         MutableCapabilities capabilities = new MutableCapabilities();
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOpt);
 
-        Configuration.browserCapabilities = capabilities;
 
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOpt);
 
@@ -86,6 +85,8 @@ public class BaseUITest {
                 "browserName", "chrome",
                 "sessionTimeout", "10m"
         ));
+
+        Configuration.browserCapabilities = capabilities;
 
         open();
         WebDriverRunner.getWebDriver().manage().window().maximize();
