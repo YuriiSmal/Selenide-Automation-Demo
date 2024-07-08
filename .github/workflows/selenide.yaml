@@ -1,4 +1,4 @@
-name: Selenide Tests
+name: Selenide Build Check
 
 on:
   push:
@@ -25,4 +25,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew clean build -x tests
+        run: ./gradlew clean build

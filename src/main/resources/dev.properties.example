@@ -1,0 +1,3 @@
+#Create file 'dev.properties' to use it as development properties file
+
+use_local_browser = true
