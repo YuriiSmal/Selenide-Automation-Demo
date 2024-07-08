@@ -1,0 +1,13 @@
+.allure
+.gradle
+schema
+build
+allure-results/*
+out
+.gradletasknamecache
+logs*
+
+#IDEA Files
+.idea/*
+*.iml
+*.ipr

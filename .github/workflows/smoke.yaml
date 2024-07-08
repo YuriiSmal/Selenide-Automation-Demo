@@ -1,0 +1,82 @@
+name: Smoke Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2  # Checkout the repository
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Grant execute permission for Gradlew
+        run: chmod +x gradlew
+
+      - name: Set up Docker
+        uses: docker/setup-docker@v2
+        with:
+          docker-version: '20.10.8'
+
+      - name: Start Selenoid
+        run: |
+          docker run -d --name selenoid \
+            -p 4444:4444 \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            aerokube/selenoid:latest-release
+
+      - name: Start Selenoid UI
+        run: |
+          docker run -d --name selenoid-ui \
+            -p 8080:8080 \
+            aerokube/selenoid-ui:latest-release --selenoid-uri http://localhost:4444
+
+      - name: Get Selenoid Node IP
+        id: selenoid-ip
+        run: |
+          SELENOID_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' selenoid)
+          echo "::set-output name=selenoid_ip::$SELENOID_IP"
+
+      - name: Build with Gradle
+        run: ./gradlew clean build
+
+      - name: Run Selenide Tests
+        run: |
+          export SELENOID_URL=http://${{ steps.selenoid-ip.outputs.selenoid_ip }}:4444/wd/hub
+          ./gradlew test -Dwebdriver.remote.url=$SELENOID_URL
+
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: build/allure-results
+
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history

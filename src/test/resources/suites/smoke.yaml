@@ -1,0 +1,10 @@
+name: Smoke Test
+parallel: tests
+threadCount: 5
+
+tests:
+  - name: Smoke
+    parallel: classes
+    threadCount: 5
+    packages:
+      - smoke
