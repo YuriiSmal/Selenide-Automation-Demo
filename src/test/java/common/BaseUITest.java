@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeMethod;
 import utils.DarkMode;
+import utils.RecordVideo;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -27,17 +28,25 @@ public class BaseUITest {
     public void setupBrowser(Method method) {
 
         boolean darkMode = false;
-        var noVideoAnnotation = method.getAnnotation(DarkMode.class);
-        if (noVideoAnnotation != null && noVideoAnnotation.enabled()) {
-            darkMode = true;
+        boolean recordVideo = true;
+        var darkThemeAnnotation = method.getAnnotation(DarkMode.class);
+        if (darkThemeAnnotation != null) {
+            darkMode = darkThemeAnnotation.enabled();
+            log.info("Set dark mode on {} for test {}",
+                    darkThemeAnnotation.enabled(), method.getName());
+        }
+
+        var recordVideoAnnotation = method.getAnnotation(RecordVideo.class);
+        if (recordVideoAnnotation != null) {
+            recordVideo = recordVideoAnnotation.enabled();
             log.info("Skipping video recording for {}", method.getName());
         }
 
-        initBrowser(darkMode);
+        initBrowser(method.getName(), recordVideo, darkMode);
     }
 
 
-    public void initBrowser(boolean useDarkMode) {
+    public void initBrowser(String testName, boolean enableVideo, boolean useDarkMode) {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 35000;
         Configuration.pollingInterval = 5000;
@@ -46,6 +55,7 @@ public class BaseUITest {
         Configuration.fileDownload = FileDownloadMode.FOLDER;
 
         if (!USE_LOCAL_BROWSER) {
+            log.info("Setting Up Remote Driver");
             Configuration.remote = SELENOID_HOST_URL;
             Configuration.remoteReadTimeout = Duration.ofSeconds(30).toMillis();
             Configuration.remoteConnectionTimeout = Duration.ofSeconds(30).toMillis();
@@ -66,6 +76,16 @@ public class BaseUITest {
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOpt);
 
         Configuration.browserCapabilities = capabilities;
+
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOpt);
+
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", enableVideo,
+                "name", testName,
+                "browserName", "chrome",
+                "sessionTimeout", "10m"
+        ));
 
         open();
         WebDriverRunner.getWebDriver().manage().window().maximize();
