@@ -30,6 +30,11 @@ jobs:
           --env DOCKER_API_VERSION=1.39
 
     steps:
+      - name: Clean workspace
+        run: |
+            sudo chmod -R 777 ${{ github.workspace }}
+            sudo rm -rf ${{ github.workspace }}/.github
+
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
