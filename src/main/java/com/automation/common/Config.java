@@ -16,7 +16,7 @@ public class Config {
     }
 
     static {
-        String localDevPropsPath = "dev.properties.example";
+        String localDevPropsPath = "dev.properties";
         loadProperties(localDevProps, localDevPropsPath);
         String useLocalBrowser = Optional
                 .ofNullable((localDevProps.getProperty("use_local_browser")))
