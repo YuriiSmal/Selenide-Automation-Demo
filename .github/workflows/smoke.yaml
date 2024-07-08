@@ -2,12 +2,6 @@ name: Smoke Tests
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
   test:
