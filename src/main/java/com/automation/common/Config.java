@@ -26,9 +26,7 @@ public class Config {
                 ? Boolean.parseBoolean(useLocalBrowser)
                 : Boolean.parseBoolean(System.getProperty("LocalBrowser"));
 
-        SELENOID_HOST_URL = USE_LOCAL_BROWSER
-                ? "http://localhost:4444/wd/hub"
-                : System.getProperty("SelenoidHost");
+        SELENOID_HOST_URL = "http://localhost:4444/wd/hub";
     }
 
     public static void loadProperties(Properties properties, String propertiesFilePath) {
