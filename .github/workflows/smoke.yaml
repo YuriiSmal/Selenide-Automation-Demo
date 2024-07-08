@@ -7,6 +7,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      selenoid:
+        image: aerokube/selenoid:latest-release
+        ports:
+          - 4444:4444
+        options:
+          --env DOCKER_API_VERSION=1.39
+          --env OVERRIDE_VIDEO_OUTPUT_DIR=/tmp/video
+          --env OVERRIDE_LOG_OUTPUT_DIR=/tmp/logs
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - /tmp/video:/tmp/video
+          - /tmp/logs:/tmp/logs
+      selenoid-ui:
+        image: aerokube/selenoid-ui:latest-release
+        ports:
+          - 8080:8080
+        options:
+          --link selenoid
+          --env DOCKER_API_VERSION=1.39
+
     steps:
       - uses: actions/checkout@v2  # Checkout the repository
 
@@ -19,37 +40,12 @@ jobs:
       - name: Grant execute permission for Gradlew
         run: chmod +x gradlew
 
-      - name: Set up Docker
-        uses: docker/setup-docker@v2
-        with:
-          docker-version: '20.10.8'
-
-      - name: Start Selenoid
-        run: |
-          docker run -d --name selenoid \
-            -p 4444:4444 \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            aerokube/selenoid:latest-release
-
-      - name: Start Selenoid UI
-        run: |
-          docker run -d --name selenoid-ui \
-            -p 8080:8080 \
-            aerokube/selenoid-ui:latest-release --selenoid-uri http://localhost:4444
-
-      - name: Get Selenoid Node IP
-        id: selenoid-ip
-        run: |
-          SELENOID_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' selenoid)
-          echo "::set-output name=selenoid_ip::$SELENOID_IP"
-
       - name: Build with Gradle
         run: ./gradlew clean build
 
       - name: Run Selenide Tests
         run: |
-          export SELENOID_URL=http://${{ steps.selenoid-ip.outputs.selenoid_ip }}:4444/wd/hub
-          ./gradlew test -Dwebdriver.remote.url=$SELENOID_URL
+          ./gradlew suiteTest -PType=suiteTest
 
       - name: Load test report history
         uses: actions/checkout@v3

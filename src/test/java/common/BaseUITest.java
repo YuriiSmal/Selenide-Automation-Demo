@@ -3,7 +3,6 @@ package common;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.FileDownloadMode;
 import com.codeborne.selenide.WebDriverRunner;
-import com.automation.common.Config;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
@@ -13,8 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import utils.DarkMode;
 
 import java.lang.reflect.Method;
+import java.time.Duration;
 import java.util.Map;
 
+import static com.automation.common.Config.*;
 import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
@@ -44,9 +45,10 @@ public class BaseUITest {
         Configuration.downloadsFolder = "build/downloads";
         Configuration.fileDownload = FileDownloadMode.FOLDER;
 
-        if (!Config.USE_LOCAL_BROWSER) {
-            System.out.println("All fine");
-            return;
+        if (!USE_LOCAL_BROWSER) {
+            Configuration.remote = SELENOID_HOST_URL;
+            Configuration.remoteReadTimeout = Duration.ofSeconds(30).toMillis();
+            Configuration.remoteConnectionTimeout = Duration.ofSeconds(30).toMillis();
         }
 
         var chromeOpt = new ChromeOptions();
