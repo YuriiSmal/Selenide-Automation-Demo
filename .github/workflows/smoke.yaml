@@ -59,6 +59,9 @@ jobs:
         run: |
           ./gradlew suiteTest -PType=suiteTest
 
+      - name: Print Selenoid Logs
+        run: docker logs $(docker ps -q --filter ancestor=aerokube/selenoid:latest-release)
+
       - name: Load test report history
         uses: actions/checkout@v3
         if: always()
