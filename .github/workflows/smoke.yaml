@@ -44,7 +44,7 @@ jobs:
 
       - name: Run Selenide Tests
         run: |
-          ./gradlew suiteTest -PType=suiteTest
+          ./gradlew suiteTest -PtestType=suiteTest
 
       - name: Load test report history
         uses: actions/checkout@v3
