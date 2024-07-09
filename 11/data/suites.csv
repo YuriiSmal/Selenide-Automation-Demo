@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"skipped","Tue Jul 09 07:32:32 GMT 2024","Tue Jul 09 07:32:32 GMT 2024","32","MYFIRSTPROJECT  debugTest suite","MYFIRSTPROJECT  debugTest tests","smoke.GoogleSearchTest","smoke.GoogleSearchTest","googleSearchTest","googleSearchTest",""
+"broken","Tue Jul 09 07:32:32 GMT 2024","Tue Jul 09 07:32:32 GMT 2024","171","MYFIRSTPROJECT  debugTest suite","MYFIRSTPROJECT  debugTest tests","smoke.GoogleSearchTest","smoke.GoogleSearchTest","setupBrowser","setupBrowser",""
