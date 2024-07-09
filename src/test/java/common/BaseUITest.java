@@ -10,6 +10,7 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import utils.DarkMode;
 import utils.RecordVideo;
@@ -20,6 +21,7 @@ import java.time.Duration;
 import java.util.Map;
 
 import static com.automation.common.Config.*;
+import static com.automation.utils.AllureReportUtil.createFodUiEnv;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -134,5 +136,10 @@ public class BaseUITest extends MainBaseTest {
 
     private void attachLogs(String logName) {
         AllureAttachmentsUtil.attachLogs(new File(logName));
+    }
+
+    @AfterSuite
+    public void setupAllureEnvVariables() {
+        createFodUiEnv(caps);
     }
 }

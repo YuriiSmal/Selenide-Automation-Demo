@@ -22,7 +22,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 @Slf4j
 public class AllureAttachmentsUtil {
 
-    private AllureAttachmentsUtil () {
+    private AllureAttachmentsUtil() {
 
     }
 

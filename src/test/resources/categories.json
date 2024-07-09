@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Ignored tests",
+    "matchedStatuses": [
+      "skipped"
+    ]
+  },
+  {
+    "name": "Ignored tests",
+    "matchedStatuses": [
+      "skipped"
+    ],
+    "flaky": true
+  },
+  {
+    "name": "Broken & Failed Tests",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "flaky": true
+  },
+  {
+    "name": "Broken & Failed Tests",
+    "matchedStatuses": [
+      "broken",
+      "failed"
+    ]
+  },
+  {
+    "name": "Passed Tests",
+    "matchedStatuses": [
+      "passed"
+    ],
+    "flaky": true
+  },
+  {
+    "name": "Passed Tests",
+    "matchedStatuses": [
+      "passed"
+    ]
+  },
+  {
+    "name": "FOD Exceptions",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*Fod(.*)Exception.*"
+  },
+  {
+    "name": "FOD Exceptions",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*Fod(.*)Exception.*",
+    "flaky": true
+  },
+  {
+    "name": "Assert Errors",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*AssertionError.*|.*AssertionFailedError.*"
+  },
+  {
+    "name": "Assert Errors",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*AssertionError.*|.*AssertionFailedError.*",
+    "flaky": true
+  },
+  {
+    "name": "Selenium Exceptions",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*org.openqa.selenium.*"
+  },
+  {
+    "name": "Selenium Exceptions",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*org.openqa.selenium.*",
+    "flaky": true
+  },
+  {
+    "name": "Connection Errors",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*ERR_CONNECTION.*"
+  },
+  {
+    "name": "Connection Errors",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ],
+    "traceRegex": ".*ERR_CONNECTION.*",
+    "flaky": true
+  },
+  {
+    "name": "Unknown Tests",
+    "matchedStatuses": [
+      "unknown"
+    ]
+  },
+  {
+    "name": "Unknown Tests",
+    "matchedStatuses": [
+      "unknown"
+    ],
+    "flaky": true
+  }
+]
