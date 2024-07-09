@@ -30,8 +30,8 @@ jobs:
         run: ./gradlew clean build
 
       - name: Start selenoid
-        uses: Xotabu4/selenoid-github-action@v2
-      - uses: actions/checkout@v1
+        uses: ajinx/selenoid@v2
+      - uses: actions/checkout@v2
       - run: npm ci
 
       - name: Run Selenide Tests
