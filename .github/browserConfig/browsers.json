@@ -8,7 +8,7 @@
         "path": "/",
         "tmpfs": {"/tmp": "size=512m"},
         "env": ["ENABLE_VNC=true", "SCREEN_WIDTH=1920", "SCREEN_HEIGHT=1080", "SCREEN_DEPTH=24"],
-        "args": ["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"]
+        "args": ["--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--headless"]
       }
     }
   }

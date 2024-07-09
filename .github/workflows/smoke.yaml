@@ -21,6 +21,7 @@ jobs:
           - /tmp/video:/tmp/video
           - /tmp/logs:/tmp/logs
           - ${{ github.workspace }}/.github/browserConfig/browsers.json:/etc/selenoid/browsers.json
+          - /dev/shm:/dev/shm
       selenoid-ui:
         image: aerokube/selenoid-ui:latest-release
         ports:
