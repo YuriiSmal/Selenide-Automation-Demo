@@ -10,7 +10,9 @@ import java.util.Properties;
 public class Config {
     protected static Properties localDevProps = new Properties();
     public static final boolean USE_LOCAL_BROWSER;
+    public static final boolean DISABLE_RETRY_ANALYZER;
     public static final String SELENOID_HOST_URL;
+    public static final String WD_VIDEO;
 
     private Config() {
     }
@@ -27,6 +29,12 @@ public class Config {
                 : Boolean.parseBoolean(System.getProperty("LocalBrowser"));
 
         SELENOID_HOST_URL = "http://localhost:4444/wd/hub";
+        WD_VIDEO = SELENOID_HOST_URL.replace("/wd/hub", "");
+
+        DISABLE_RETRY_ANALYZER = Boolean
+                .parseBoolean(Optional
+                        .ofNullable((localDevProps.getProperty("disable_retry_analyzer")))
+                        .orElse("false"));
     }
 
     public static void loadProperties(Properties properties, String propertiesFilePath) {

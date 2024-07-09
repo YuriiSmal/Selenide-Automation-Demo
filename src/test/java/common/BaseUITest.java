@@ -1,5 +1,6 @@
 package common;
 
+import com.automation.utils.AllureAttachmentsUtil;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.FileDownloadMode;
 import com.codeborne.selenide.WebDriverRunner;
@@ -8,21 +9,40 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.DarkMode;
 import utils.RecordVideo;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Map;
 
 import static com.automation.common.Config.*;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Slf4j
-public class BaseUITest {
+public class BaseUITest extends MainBaseTest {
 
     protected Capabilities caps;
+
+    @AfterMethod
+    public void attachTestArtifacts() {
+        try {
+            AllureAttachmentsUtil.attachBrowserLogs();
+        } catch (Exception e) {
+            log.info("Browser Logs was not attached due the next exception: ");
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
+
+        closeDriverAttachVideo();
+        var logName = String.format("logs/%s%s", org.apache.logging.log4j.ThreadContext.get("testName"), ".log");
+        attachLogs(logName);
+    }
 
     @BeforeMethod
     public void setupBrowser(Method method) {
@@ -92,5 +112,27 @@ public class BaseUITest {
         WebDriverRunner.getWebDriver().manage().window().maximize();
 
         caps = ((RemoteWebDriver) WebDriverRunner.getAndCheckWebDriver()).getCapabilities();
+    }
+
+    public String getSelenoidSessionId() {
+        return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+    }
+
+    public void closeDriverAttachVideo() {
+        String sessionId = "";
+        String selenoidHost = "";
+        if (Configuration.remote != null) {
+            sessionId = getSelenoidSessionId();
+            selenoidHost = WD_VIDEO;
+            log.info("Get session id: {}", sessionId);
+        }
+        closeWebDriver();
+        if (Configuration.remote != null) {
+            AllureAttachmentsUtil.attachSelenoidVideo(selenoidHost, sessionId);
+        }
+    }
+
+    private void attachLogs(String logName) {
+        AllureAttachmentsUtil.attachLogs(new File(logName));
     }
 }

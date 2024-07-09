@@ -1,4 +1,4 @@
-package com.automation.report;
+package com.automation.utils;
 
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Allure;
@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -74,5 +75,18 @@ public class AllureAttachmentsUtil {
 
     public static void addCurrentTime() {
         Allure.addAttachment("Time Stamp", LocalDateTime.now().toString());
+    }
+
+    public static void attachSelenoidVideo(String host, String sessionId) {
+        URL videoUrl = null;
+        try {
+            videoUrl = new URL(host + "/video/" + sessionId + ".mp4");
+            InputStream is = SelenoidUtil.getSelenoidVideo(videoUrl);
+            Allure.addAttachment("Video", "video/mp4", is, "mp4");
+            log.info("Attached selenoid video from {}", videoUrl);
+            SelenoidUtil.deleteSelenoidVideo(videoUrl);
+        } catch (Exception e) {
+            log.error("Can't attach video from {}: {}", videoUrl != null ? videoUrl : "No url", e.getMessage());
+        }
     }
 }
