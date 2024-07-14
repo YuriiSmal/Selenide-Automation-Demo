@@ -1,4 +1,4 @@
-name: Selenide Build Check
+name: Project Build Check
 
 on:
   pull_request:
