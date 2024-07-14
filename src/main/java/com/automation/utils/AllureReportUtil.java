@@ -29,7 +29,11 @@ public class AllureReportUtil {
         }
     }
 
-    public static void createFodUiEnv(Capabilities caps) {
+    public static void createUiEnvProperties(Capabilities caps) {
+        if (caps == null) {
+            log.error("Capabilities == null and will not attached to report!");
+            return;
+        }
         log.info("Setup {} file for UI allure environment, browser: {} ",
                 pathToAllureResults, caps.getBrowserName());
 

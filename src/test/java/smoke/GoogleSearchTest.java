@@ -20,6 +20,5 @@ public class GoogleSearchTest extends BaseUITest {
         assertThat(urlBefore)
                 .as("Just check that link was changed...")
                 .isNotEqualTo(urlAfter);
-
     }
 }
