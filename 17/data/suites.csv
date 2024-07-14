@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Jul 14 10:01:24 GMT 2024","Sun Jul 14 10:01:29 GMT 2024","4622","Smoke Test","Smoke","smoke.GoogleSearchTest","smoke.GoogleSearchTest","googleSearchTest","googleSearchTest",""
