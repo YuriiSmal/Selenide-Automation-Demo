@@ -41,20 +41,20 @@
     ]
   },
   {
-    "name": "FOD Exceptions",
+    "name": "Product Exceptions",
     "matchedStatuses": [
       "failed",
       "broken"
     ],
-    "traceRegex": ".*Fod(.*)Exception.*"
+    "traceRegex": ".*Product(.*)Exception.*"
   },
   {
-    "name": "FOD Exceptions",
+    "name": "Product Exceptions",
     "matchedStatuses": [
       "failed",
       "broken"
     ],
-    "traceRegex": ".*Fod(.*)Exception.*",
+    "traceRegex": ".*Product(.*)Exception.*",
     "flaky": true
   },
   {

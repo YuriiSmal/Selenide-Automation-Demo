@@ -21,7 +21,7 @@ import java.time.Duration;
 import java.util.Map;
 
 import static com.automation.common.Config.*;
-import static com.automation.utils.AllureReportUtil.createFodUiEnv;
+import static com.automation.utils.AllureReportUtil.createUiEnvProperties;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -29,7 +29,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @Slf4j
 public class BaseUITest extends MainBaseTest {
 
-    protected Capabilities caps;
+    private Capabilities caps;
 
     @AfterMethod
     public void attachTestArtifacts() {
@@ -140,6 +140,6 @@ public class BaseUITest extends MainBaseTest {
 
     @AfterSuite
     public void setupAllureEnvVariables() {
-        createFodUiEnv(caps);
+        createUiEnvProperties(caps);
     }
 }

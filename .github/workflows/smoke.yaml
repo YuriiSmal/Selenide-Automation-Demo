@@ -1,4 +1,4 @@
-name: Smoke Tests
+name: Google Search Simple Test
 
 on:
   workflow_dispatch:

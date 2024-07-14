@@ -64,11 +64,11 @@ def testType = findProperty('testType') ?: 'debugTest'
 
 
 tasks.register('debugTest', RunTests) {
-    run(testType, 'myFirstProject')
+    run(testType, 'My_Demo')
 }
 
 tasks.register('suiteTest', RunTests) {
-    run(testType, 'myFirstProject')
+    run(testType, 'My_Demo')
 }
 
 tasks.register('report', Delete) {

@@ -4,7 +4,7 @@ threadCount: 5
 
 tests:
   - name: Smoke
-    parallel: classes
+    parallel: methods
     threadCount: 5
     packages:
       - smoke
