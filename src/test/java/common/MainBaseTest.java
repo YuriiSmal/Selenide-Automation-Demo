@@ -20,4 +20,6 @@ public class MainBaseTest {
     public void addAllureReportCategories() {
         addCategoriesToReport();
     }
+
+
 }
