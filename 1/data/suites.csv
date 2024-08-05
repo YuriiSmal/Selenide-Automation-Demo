@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Mon Aug 05 11:59:35 GMT 2024","Mon Aug 05 12:00:20 GMT 2024","45009","","Login functionality","","Successful login with valid credentials","","Successful login with valid credentials",""
+"failed","Mon Aug 05 11:59:35 GMT 2024","Mon Aug 05 12:00:20 GMT 2024","45095","","Login functionality","","Successful login with valid credentials","","Successful login with valid credentials",""
