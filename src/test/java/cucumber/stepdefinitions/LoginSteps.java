@@ -10,6 +10,7 @@ import io.qameta.allure.Step;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -58,11 +59,13 @@ public class LoginSteps {
         zeroLoginPage.clickSignIn();
     }
 
-    @Step("Verify user is redirected to my account")
-    @Then("the user should be redirected to the my account")
-    public void userIsRedirectedToHomepage() {
-        $("#myacc").shouldBe(visible);
+    @Step("Verify validation message is visible")
+    @Then("validation message should be visible")
+    public void validationMessageIsVisible() {
+        $(byText("Login and/or password are wrong."))
+                .shouldBe(visible, Duration.ofSeconds(30));
     }
+
 
     @After
     public void tearDown() {
