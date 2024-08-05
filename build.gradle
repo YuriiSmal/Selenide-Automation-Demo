@@ -35,6 +35,9 @@ dependencies {
 
     implementation(
             'com.codeborne:selenide-selenoid:7.3.2',
+            'io.cucumber:cucumber-java:7.18.1',
+            'io.cucumber:cucumber-testng:7.18.1',
+            'io.qameta.allure:allure-cucumber7-jvm:2.28.1',
             'org.projectlombok:lombok:1.18.26',
             'io.qameta.allure:allure-testng:2.27.0',
             'io.qameta.allure:allure-selenide:2.27.0',
@@ -69,6 +72,10 @@ tasks.register('debugTest', RunTests) {
 
 tasks.register('suiteTest', RunTests) {
     run(testType, 'My_Demo')
+}
+
+tasks.register('cucumber', RunTests) {
+    run(testType, 'Cucumber_Demo')
 }
 
 tasks.register('report', Delete) {

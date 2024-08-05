@@ -1,4 +1,4 @@
-package com.automation.pages;
+package com.automation.pages.google;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;

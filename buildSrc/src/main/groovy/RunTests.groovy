@@ -9,7 +9,6 @@ abstract class RunTests extends Test {
             println 'Running ' + testType + ' in ' + project
             useTestNG() {
                 useDefaultListeners = true
-
                 switch (testType) {
                     case ('debugTest'):
                         threadCount = 3
@@ -19,6 +18,10 @@ abstract class RunTests extends Test {
                         break
                     case ('suiteTest'):
                         suites 'src/test/resources/suites/smoke.yaml'
+                        break
+                    case ('cucumber'):
+                        maxParallelForks = 2
+                        suites 'src/test/resources/suites/cucumber_example.yaml'
                         break
                     default:
                         logger.error("Couldn't find suite ${testType}")
