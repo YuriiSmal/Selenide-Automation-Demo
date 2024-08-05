@@ -1,0 +1,13 @@
+launch_status failed=2 1722860786000000000
+launch_status broken=0 1722860786000000000
+launch_status passed=0 1722860786000000000
+launch_status skipped=0 1722860786000000000
+launch_status unknown=0 1722860786000000000
+launch_time duration=45378 1722860786000000000
+launch_time min_duration=45105 1722860786000000000
+launch_time max_duration=45378 1722860786000000000
+launch_time sum_duration=90483 1722860786000000000
+launch_problems broken_&_failed_tests=2 1722860786000000000
+launch_problems selenium_exceptions=2 1722860786000000000
+launch_retries retries=2 1722860786000000000
+launch_retries run=2 1722860786000000000
