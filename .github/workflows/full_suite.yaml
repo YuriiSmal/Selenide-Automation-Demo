@@ -1,4 +1,4 @@
-name: Google Search Simple Test
+name: Full Suite Test
 
 on:
   workflow_dispatch:
