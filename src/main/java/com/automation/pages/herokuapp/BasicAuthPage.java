@@ -9,7 +9,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 @Slf4j
 public class BasicAuthPage {
 
-    @Step("Accepp basic auth with url")
+    @Step("Accept basic auth with url")
     public void acceptBasicAuth(String name, String password) {
         var url = url();
         var split = url.split("//");

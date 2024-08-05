@@ -1,6 +1,4 @@
 name: Selenide Test Example
-parallel: tests
-threadCount: 5
 
 tests:
   - name: Selenide
