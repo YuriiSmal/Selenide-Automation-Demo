@@ -1,6 +1,6 @@
 package smoke;
 
-import com.automation.pages.GoogleLandingPage;
+import com.automation.pages.google.GoogleLandingPage;
 import common.BaseUITest;
 import org.testng.annotations.Test;
 import utils.DarkMode;

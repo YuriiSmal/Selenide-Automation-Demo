@@ -1,0 +1,10 @@
+name: Cucumber Test
+parallel: tests
+threadCount: 5
+
+tests:
+  - name: Cucumber Example
+    parallel: methods
+    threadCount: 5
+    packages:
+      - cucumber.testrunners
