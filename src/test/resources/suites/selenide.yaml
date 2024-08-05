@@ -1,9 +1,9 @@
-name: Smoke Test
+name: Selenide Test Example
 parallel: tests
 threadCount: 5
 
 tests:
-  - name: Smoke
+  - name: Selenide
     parallel: methods
     threadCount: 5
     packages:
