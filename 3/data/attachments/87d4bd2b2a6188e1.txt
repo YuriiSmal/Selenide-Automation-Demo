@@ -1,0 +1,24 @@
+[WARNING] 05-08-2024 15:22:42:792 : https://letcode.in/styles.6ea7e70024831ca92a20.js 0 The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style="writing-mode: vertical-lr; direction: rtl"> instead. 
+[WARNING] 05-08-2024 15:22:42:806 : https://letcode.in/styles.6ea7e70024831ca92a20.js 0 The keyword 'slider-vertical' specified to an 'appearance' property is not standardized. It will be removed in the future. Use <input type=range style="writing-mode: vertical-lr; direction: rtl"> instead. 
+[SEVERE] 05-08-2024 15:22:51:205 : https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850 129:356 TypeError: Cannot read properties of undefined (reading 'push')
+    at $o (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/reactive_library_fy2021.js?bust=31085850:176:349)
+    at new ts (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/reactive_library_fy2021.js?bust=31085850:278:258)
+    at mo.createAdSlot (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/reactive_library_fy2021.js?bust=31085850:279:327)
+    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:751:286
+    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:130:426
+    at Lk.ub (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:130:226)
+    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:130:415
+    at l.invoke (https://letcode.in/polyfills.1aefc75bf7d5acb269d2.js:1:7879)
+    at i.run (https://letcode.in/polyfills.1aefc75bf7d5acb269d2.js:1:3291)
+    at https://letcode.in/polyfills.1aefc75bf7d5acb269d2.js:1:14223 
+[SEVERE] 05-08-2024 15:22:51:313 : https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850 129:356 TypeError: Cannot read properties of undefined (reading 'push')
+    at $o (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/reactive_library_fy2021.js?bust=31085850:176:349)
+    at new ts (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/reactive_library_fy2021.js?bust=31085850:278:258)
+    at mo.createAdSlot (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/reactive_library_fy2021.js?bust=31085850:279:327)
+    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:751:286
+    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:130:426
+    at Lk.ub (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:130:226)
+    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202407310101/show_ads_impl_fy2021.js?bust=31085850:130:415
+    at l.invoke (https://letcode.in/polyfills.1aefc75bf7d5acb269d2.js:1:7879)
+    at i.run (https://letcode.in/polyfills.1aefc75bf7d5acb269d2.js:1:3291)
+    at https://letcode.in/polyfills.1aefc75bf7d5acb269d2.js:1:14223 
