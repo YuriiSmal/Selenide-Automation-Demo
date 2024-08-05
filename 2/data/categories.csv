@@ -1,3 +1,4 @@
 "Category","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
-"Broken & Failed Tests","2","0","0","0","0"
-"Selenium Exceptions","2","0","0","0","0"
+"Broken & Failed Tests","0","3","0","0","0"
+"Selenium Exceptions","0","3","0","0","0"
+"Passed Tests","0","0","5","0","0"
