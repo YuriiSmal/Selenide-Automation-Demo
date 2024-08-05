@@ -1,4 +1,4 @@
-name: Cucumber Test Example
+name: Google Search Simple Test
 
 on:
   workflow_dispatch:
@@ -44,15 +44,8 @@ jobs:
 
       - name: Run Selenide Tests
         run: |
+          ./gradlew suiteTest -PtestType=suiteTest
           ./gradlew cucumber -PtestType=cucumber
-
-      - name: Load test report history
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages-cucumber
-          path: gh-pages-cucumber
 
       - name: Load test report history
         uses: actions/checkout@v3
