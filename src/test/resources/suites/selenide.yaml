@@ -8,3 +8,8 @@ tests:
     threadCount: 5
     packages:
       - smoke
+  - name: Cucumber Example
+    parallel: methods
+    threadCount: 5
+    packages:
+      - cucumber.testrunners

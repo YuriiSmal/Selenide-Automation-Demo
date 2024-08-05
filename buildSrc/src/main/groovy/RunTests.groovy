@@ -17,7 +17,7 @@ abstract class RunTests extends Test {
                         setTestName("${project.toUpperCase()}  ${testType} tests")
                         break
                     case ('suiteTest'):
-                        suites 'src/test/resources/suites/smoke.yaml'
+                        suites 'src/test/resources/suites/selenide.yaml'
                         break
                     case ('cucumber'):
                         maxParallelForks = 2
